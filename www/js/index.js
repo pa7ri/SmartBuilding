@@ -28,6 +28,7 @@ $(document).ready(function() {
 var app = {
 
     api_url: 'https://smartbuildingucm.herokuapp.com/building/temp',
+    api_your_home_url: 'https://smartbuildingucm.herokuapp.com/house/temp/tucasa',
 
 
     // Application Constructor
@@ -36,35 +37,48 @@ var app = {
     },
 
 
+    updateBuildingTemp: function() {
+        $.ajax({
+           type: "GET",
+           dataType: 'text',
+           url: app.api_url,
+           success: app.onSuccess,
+           error: app.onError
+        });
+        $.ajax({
+           type: "GET",
+           dataType: 'text',
+           url: app.api_your_home_url,
+           success: app.onSuccessYourHome,
+           error: app.onError
+        });
+     },
+ 
+    onSuccess: function(data) {
+        if (data.hasOwnProperty('status')) {
+           navigator.notification.alert('Please insert a valid feed!', null,'Error','OK');
+        }else{
+         $('#temp-building').html(data); 
+       }
+    }, 
 
+    onSuccessYourHome: function(data) {
+        if (data.hasOwnProperty('status')) {
+           navigator.notification.alert('Please insert a valid feed!', null,'Error','OK');
+        }else{
+         $('#temp-your-home').innerHTML = data;
+ 
+       }
+    }, 
+ 
+    onError: function(data, textStatus, errorThrown) {
+         console.error('Data: ' + data);
+         console.error('Status: ' + textStatus);
+         console.error('Error: ' + errorThrown);
+     },
+        
 
-
-updateBuildingTemp: function() {
-       $.ajax({
-          type: "GET",
-          dataType: 'text',
-          url: app.api_url,
-          success: app.onSuccess,
-          error: app.onError
-       });
-    },
-
-onSuccess: function(data) {
-       if (data.hasOwnProperty('status')) {
-          navigator.notification.alert('Please insert a valid feed!', null,'Error','OK');
-       }else{
-        $('#feeds').html(data);
-
-      }
-   }, 
-
-   onError: function(data, textStatus, errorThrown) {
-        console.error('Data: ' + data);
-        console.error('Status: ' + textStatus);
-        console.error('Error: ' + errorThrown);
-    },
-};
-
+ };
 
 
 app.initialize();
