@@ -29,7 +29,7 @@ var app = {
 
     api_url: 'https://smartbuildingucm.herokuapp.com/building/temp',
     api_your_home_url: 'https://smartbuildingucm.herokuapp.com/house/temp/tucasa',
-
+	api_my_home_url: 'https://smartbuildingucm.herokuapp.com/house/temp/micasa',
 
     // Application Constructor
     initialize: function() {
@@ -52,6 +52,13 @@ var app = {
            success: app.onSuccessYourHome,
            error: app.onError
         });
+		$.ajax({
+           type: "GET",
+           dataType: 'text',
+           url: app.api_my_home_url,
+           success: app.onSuccessMyHome,
+           error: app.onError
+        });
      },
  
     onSuccess: function(data) {
@@ -67,6 +74,15 @@ var app = {
            navigator.notification.alert('Please insert a valid feed!', null,'Error','OK');
         }else{
          $('#temp-your-home').innerHTML = data;
+ 
+       }
+    }, 
+	
+	onSuccessMyHome: function(data) {
+        if (data.hasOwnProperty('status')) {
+           navigator.notification.alert('Please insert a valid feed!', null,'Error','OK');
+        }else{
+         $('#temp-my-home').innerHTML = data;
  
        }
     }, 
