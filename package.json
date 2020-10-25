@@ -26,7 +26,8 @@
     "plugins": {
       "cordova-plugin-whitelist": {},
       "cordova-plugin-browsersync": {},
-      "cordova-plugin-timer": {}
+      "cordova-plugin-timer": {},
+      "cordova-plugin-browser": {}
     },
     "platforms": [
       "android",

@@ -19,89 +19,86 @@
 
 // based on code from https://medium.com/@alexdimango/an-apache-cordova-with-api-fetch-and-bootstrap-in-five-minutes-64b248b30940
 
-
-$(document).ready(function() {
-    setInterval(()=>app.updateBuildingTemp(),3000);
+$(document).ready(function () {
+  setInterval(() => app.updateBuildingTemp(), 3000);
 });
 
-
 var app = {
+  api_url: "https://smartbuildingucm.herokuapp.com/building/temp",
+  api_your_home_url: "https://smartbuildingucm.herokuapp.com/house/temp/tucasa",
+  api_my_home_url: "https://smartbuildingucm.herokuapp.com/house/temp/micasa",
 
-    api_url: 'https://smartbuildingucm.herokuapp.com/building/temp',
-    api_your_home_url: 'https://smartbuildingucm.herokuapp.com/house/temp/tucasa',
-	api_my_home_url: 'https://smartbuildingucm.herokuapp.com/house/temp/micasa',
+  // Application Constructor
+  initialize: function () {},
 
-    // Application Constructor
-    initialize: function() {
-       
-    },
+  updateBuildingTemp: function () {
+    $.ajax({
+      type: "GET",
+      dataType: "text",
+      url: app.api_url,
+      success: app.onSuccess,
+      error: app.onError,
+    });
+    $.ajax({
+      type: "GET",
+      dataType: "text",
+      url: app.api_your_home_url,
+      success: app.onSuccessYourHome,
+      error: app.onError,
+    });
+    $.ajax({
+      type: "GET",
+      dataType: "text",
+      url: app.api_my_home_url,
+      success: app.onSuccessMyHome,
+      error: app.onError,
+    });
+  },
 
+  onSuccess: function (data) {
+    if (data.hasOwnProperty("status")) {
+      navigator.notification.alert(
+        "Please insert a valid feed!",
+        null,
+        "Error",
+        "OK"
+      );
+    } else {
+      $("#temp-building").html(data);
+    }
+  },
 
-    updateBuildingTemp: function() {
-        $.ajax({
-           type: "GET",
-           dataType: 'text',
-           url: app.api_url,
-           success: app.onSuccess,
-           error: app.onError
-        });
-        $.ajax({
-           type: "GET",
-           dataType: 'text',
-           url: app.api_your_home_url,
-           success: app.onSuccessYourHome,
-           error: app.onError
-        });
-		$.ajax({
-           type: "GET",
-           dataType: 'text',
-           url: app.api_my_home_url,
-           success: app.onSuccessMyHome,
-           error: app.onError
-        });
-     },
- 
-    onSuccess: function(data) {
-        if (data.hasOwnProperty('status')) {
-           navigator.notification.alert('Please insert a valid feed!', null,'Error','OK');
-        }else{
-         $('#temp-building').html(data); 
-       }
-    }, 
+  onSuccessYourHome: function (data) {
+    if (data.hasOwnProperty("status")) {
+      navigator.notification.alert(
+        "Please insert a valid feed!",
+        null,
+        "Error",
+        "OK"
+      );
+    } else {
+      $("#temp-your-home").html(data);
+    }
+  },
 
-    onSuccessYourHome: function(data) {
-        if (data.hasOwnProperty('status')) {
-           navigator.notification.alert('Please insert a valid feed!', null,'Error','OK');
-        }else{
-         $('#temp-your-home').innerHTML = data;
- 
-       }
-    }, 
-	
-	onSuccessMyHome: function(data) {
-        if (data.hasOwnProperty('status')) {
-           navigator.notification.alert('Please insert a valid feed!', null,'Error','OK');
-        }else{
-         $('#temp-my-home').innerHTML = data;
- 
-       }
-    }, 
- 
-    onError: function(data, textStatus, errorThrown) {
-         console.error('Data: ' + data);
-         console.error('Status: ' + textStatus);
-         console.error('Error: ' + errorThrown);
-     },
-        
+  onSuccessMyHome: function (data) {
+    if (data.hasOwnProperty("status")) {
+      navigator.notification.alert(
+        "Please insert a valid feed!",
+        null,
+        "Error",
+        "OK"
+      );
+    } else {
+      $("#temp-my-home").html(data);
+    }
+  },
 
- };
-
+  onError: function (data, textStatus, errorThrown) {
+    console.error("Data: " + data);
+    console.error("Status: " + textStatus);
+    console.error("Error: " + errorThrown);
+  },
+};
 
 app.initialize();
-
-
-
-
-
-
-
