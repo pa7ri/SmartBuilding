@@ -41,19 +41,33 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
 		<title>Smart Building</title>
     </head>
-    <body>	
-        <div id="feeds-building">
-            <h3>Building temperature:</h3>
-            <p id="temp-building"></p>
+    <body>
+        <div class="container"> 
+            <div id="menu">
+                <h4>Consulta su temperatura</h4>
+                <div> </div>
+                <hr class="line"> 
+                <p id="building-option" onclick="onBuildingSelected()">Building</p>
+                <p id="my-home-option" onclick="onYourHomeSelected()">Your home</p>
+                <p id="your-home-option" onclick="onMyHomeSelected()">My home</p>
+            </div>
+            <!-- Por defecto, todas ocultas-->
+            <div id="feeds">
+                <div id="feeds-building">
+                    <h4>Building temperature:</h4>
+                    <p id="temp-building">12.1231221</p>
+                </div>
+                <div id="feeds-your-home">
+                    <h4>Your home temperature:</h4>
+                    <p id="temp-your-home">34.212152</p>
+                </div>
+                <div id="feeds-my-home">
+                    <h4>My home temperature:</h4>
+                    <p id="temp-my-home">7.54332213</p>
+                </div>
+            </div>
         </div>
-        <div id="feeds-your-home">
-            <h3>Your home temperature:</h3>
-            <p id="temp-your-home"></p>
-        </div>
-	    <div id="feeds-my-home">
-            <h3>My home temperature:</h3>
-            <p id="temp-my-home"></p>
-        </div>
+        
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
     </body>

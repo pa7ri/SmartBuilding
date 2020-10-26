@@ -31,6 +31,18 @@ var app = {
   // Application Constructor
   initialize: function () {},
 
+  onBuildingSelected: function () {
+    //TODO: display = none myhome & yourhome, display=block building
+  },
+
+  onYourHomeSelected: function () {
+    //TODO: display = none building & myhome, display=block yourhome
+  },
+
+  onMyHomeSelected: function () {
+    //TODO: display = none building & yourHome, display=block myhome
+  },
+
   updateBuildingTemp: function () {
     $.ajax({
       type: "GET",

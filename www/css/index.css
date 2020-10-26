@@ -61,6 +61,38 @@ body {
     }
 }
 
+.container {
+    display: flex;
+    height: inherit;
+}
+
+.line {
+  height: 0.5px;
+  border-radius: 1px;
+  color: transparent;
+  background-color: white;
+}
+
+#menu, #feeds {
+    display: block;
+    padding: 5px;
+}
+
+#menu p:hover {  
+    border-radius: 3px;
+    color: gainsboro;
+  }
+
+#menu {
+  background-color: coral; 
+  color: white;
+  width: 30%;
+}
+
+#feeds #feeds-building, #feeds #feeds-my-home, #feeds #feeds-your-home {
+    display: none;
+}
+
 h1 {
     font-size:24px;
     font-weight:normal;
