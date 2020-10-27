@@ -32,15 +32,39 @@ var app = {
   initialize: function () {},
 
   onBuildingSelected: function () {
-    //TODO: display = none myhome & yourhome, display=block building
+    if(!document.getElementById("feeds-building").classList.contains('active')) { 
+      document.getElementById("feeds-building").classList.add('active');
+    }
+    if(document.getElementById("feeds-your-home").classList.contains('active')) { 
+      document.getElementById("feeds-your-home").classList.remove('active');
+    }
+    if(document.getElementById("feeds-my-home").classList.contains('active')) { 
+      document.getElementById("feeds-my-home").classList.remove('active');
+    }
   },
 
   onYourHomeSelected: function () {
-    //TODO: display = none building & myhome, display=block yourhome
+    if(document.getElementById("feeds-building").classList.contains('active')) { 
+      document.getElementById("feeds-building").classList.remove('active');
+    }
+    if(!document.getElementById("feeds-your-home").classList.contains('active')) { 
+      document.getElementById("feeds-your-home").classList.add('active');
+    }
+    if(document.getElementById("feeds-my-home").classList.contains('active')) { 
+      document.getElementById("feeds-my-home").classList.remove('active');
+    }
   },
 
   onMyHomeSelected: function () {
-    //TODO: display = none building & yourHome, display=block myhome
+    if(document.getElementById("feeds-building").classList.contains('active')) { 
+      document.getElementById("feeds-building").classList.remove('active');
+    }
+    if(document.getElementById("feeds-your-home").classList.contains('active')) { 
+      document.getElementById("feeds-your-home").classList.remove('active');
+    }
+    if(!document.getElementById("feeds-my-home").classList.contains('active')) { 
+      document.getElementById("feeds-my-home").classList.add('active');
+    }
   },
 
   updateBuildingTemp: function () {
