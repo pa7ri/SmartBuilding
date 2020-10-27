@@ -48,24 +48,28 @@
                 <div> </div>
                 <hr class="line"> 
                 <p id="building-option" onclick="onBuildingSelected()">Building</p>
-                <p id="my-home-option" onclick="onYourHomeSelected()">Your home</p>
-                <p id="your-home-option" onclick="onMyHomeSelected()">My home</p>
+                <p id="my-home-option" onclick="onYourHomeSelected()">My home</p>
+                <p id="your-home-option" onclick="onMyHomeSelected()">Your home</p>
             </div>
             <!-- Por defecto, todas ocultas-->
             <div id="feeds">
                 <div id="feeds-building">
                     <h4>Building temperature:</h4>
+                    <p id="temp-building"></p>
                 </div>
                 <div id="feeds-your-home">
                     <h4>Your home temperature:</h4>
+                    <p id="temp-your-home"></p>
                 </div>
                 <div id="feeds-my-home">
                     <h4>My home temperature:</h4>
+                    <p id="temp-my-home"></p>
                 </div>
             </div>
         </div>
         
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/listeners.js"></script>
     </body>
 </html>

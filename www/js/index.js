@@ -31,42 +31,6 @@ var app = {
   // Application Constructor
   initialize: function () {},
 
-  onBuildingSelected: function () {
-    if(!document.getElementById("feeds-building").classList.contains('active')) { 
-      document.getElementById("feeds-building").classList.add('active');
-    }
-    if(document.getElementById("feeds-your-home").classList.contains('active')) { 
-      document.getElementById("feeds-your-home").classList.remove('active');
-    }
-    if(document.getElementById("feeds-my-home").classList.contains('active')) { 
-      document.getElementById("feeds-my-home").classList.remove('active');
-    }
-  },
-
-  onYourHomeSelected: function () {
-    if(document.getElementById("feeds-building").classList.contains('active')) { 
-      document.getElementById("feeds-building").classList.remove('active');
-    }
-    if(!document.getElementById("feeds-your-home").classList.contains('active')) { 
-      document.getElementById("feeds-your-home").classList.add('active');
-    }
-    if(document.getElementById("feeds-my-home").classList.contains('active')) { 
-      document.getElementById("feeds-my-home").classList.remove('active');
-    }
-  },
-
-  onMyHomeSelected: function () {
-    if(document.getElementById("feeds-building").classList.contains('active')) { 
-      document.getElementById("feeds-building").classList.remove('active');
-    }
-    if(document.getElementById("feeds-your-home").classList.contains('active')) { 
-      document.getElementById("feeds-your-home").classList.remove('active');
-    }
-    if(!document.getElementById("feeds-my-home").classList.contains('active')) { 
-      document.getElementById("feeds-my-home").classList.add('active');
-    }
-  },
-
   updateBuildingTemp: function () {
     $.ajax({
       type: "GET",
