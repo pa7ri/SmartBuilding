@@ -86,11 +86,15 @@ body {
 #menu {
   background-color: coral; 
   color: white;
-  width: 30%;
+  width: 40%;
 }
 
 #feeds #feeds-building, #feeds #feeds-my-home, #feeds #feeds-your-home {
     display: none;
+}
+
+#feeds #feeds-building.active, #feeds #feeds-my-home.active, #feeds #feeds-your-home.active {
+    display: block;
 }
 
 h1 {
